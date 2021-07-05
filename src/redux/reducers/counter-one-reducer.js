@@ -1,6 +1,8 @@
 import {INC, DEC, INC_CUS, RESET} from "../action-types";
 
-const initialState = {
+const initFromLs = localStorage.getItem('count1')
+
+const initialState = initFromLs ? JSON.parse(initFromLs) : {
     count: 0
 }
 
