@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 
-import {Arrey1} from "./components/arr-del/arrey1";
+
+import {UsersF} from "./components/users-fetch/UsersF";
 
 function App() {
   return (
     <div className="App">
-      <Arrey1/>
+      <UsersF/>
     </div>
   );
 }
