@@ -4,7 +4,7 @@ export function Users({users}) {
 
     return (
         <div>
-            {users.map(user => (<h1>{user.id}- {user.name}</h1>))}
+            {users.map(el => (<h2 key={el.id}>{el.id}-{el.name ?? el.title}</h2>))}
         </div>
     );
 }

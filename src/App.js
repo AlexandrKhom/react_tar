@@ -1,40 +1,44 @@
 import './App.css';
-import {Tabs} from "./components/tabs/Tabs";
 import React, {useEffect, useState} from "react";
-import {Posts} from "./components/posts/Posts";
-import {Users} from "./components/users/Users";
-import {Comments} from "./components/comments/Comments";
+
 
 function App() {
 
-    const category = [
-        {title: 'posts', clickF: () => setTab('posts')},
-        {title: 'users', clickF: () => setTab('users')},
-        {title: 'comments', clickF: () => setTab('comments')}
-    ]
+    const [point, setPoint] = useState('')
+    const [id, setId] = useState('')
+    const [one, setOne] = useState(null)
+    const [more, setMore] = useState([])
 
-    const [tab, setTab] = useState(category[0].title)
-    const [list, setList] = useState([])
+    const url = `https://jsonplaceholder.typicode.com/`
 
-    const url = (resourse) => `https://jsonplaceholder.typicode.com/${resourse}`
-
-    const fetchData = async () => {
-        const resp = await fetch(url(tab))
+    const dataFetch = async () => {
+        const resp = await fetch(`${url}${point}/${id}`)
         const data = await resp.json()
-        setList(data)
+        if (id) {
+            setOne(data)
+            setMore([])
+            return
+        }
+        setMore(data)
+        setOne(null)
     }
-    useEffect(()=> {
-        fetchData()
-    }, [tab])
 
+    // useEffect(() => {
+    //     dataFetch()
+    // }, [point])
 
     return (
-        <div className="App">
-            <Tabs tabs={category} change={tab}/>
-            {tab === 'users' && <Users users={list}/>}
-            {tab === 'posts' && <Posts posts={list}/>}
-            {tab === 'comments' && <Comments comments={list}/>}
-
+        <div className={'App'}>
+            <input type={'text'} name={'point'} placeholder={'point'}
+                   value={point} onChange={(event => setPoint(event.target.value))}
+            />
+            <input type={'number'} name={'id'} placeholder={'id'}
+                   value={id} onChange={({target: {value}}) => setId(value)}
+            />
+            <button onClick={dataFetch}>click</button>
+            <hr/>
+            {one && (<h2>{JSON.stringify(one, null, 2)}</h2>)}
+            {more.map(el=> (<h2>{el.id}-{el.name ?? el.title}</h2>))}
         </div>
     );
 }

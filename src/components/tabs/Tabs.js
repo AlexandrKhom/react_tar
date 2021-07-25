@@ -1,4 +1,3 @@
-
 import React from "react";
 
 export function Tabs({tabs, change}) {
@@ -6,11 +5,10 @@ export function Tabs({tabs, change}) {
     return (
         <div>
             {tabs.map(el => (<button
-            style={{background: change === el.title ? 'green' : 'silver'}}
-            onClick={el.clickF}>
-
-                {el.title}
-            </button>))}
+                key={el.id}
+            style={{background: change === el.name ? 'green' : 'silver'}}
+                onClick={el.clickFun}
+            >{el.name}</button>))}
         </div>
     );
 }

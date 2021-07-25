@@ -4,7 +4,7 @@ export function Comments({comments}) {
 
     return (
         <div>
-            {comments.map(com => (<h1>{com.id} - {com.name}</h1>))}
+            {comments.map(el => (<h2 key={el.id}>{el.id}-{el.name ?? el.title}</h2>))}
         </div>
     );
 }
