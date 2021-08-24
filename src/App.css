@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+.main-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  height: 400px;
+  width: 400px;
+  background-color: blue;
+}
+
+main {
+  flex: 1;
+  background-color: yellow;
+  padding: 20px;
+}
+
+header {
+  background-color: red;
+}
+
+footer {
+  background-color: green;
+}
+
