@@ -1,0 +1,8 @@
+.middle {
+    text-align: center;
+    background-image: url("./back.png");
+    height: 90vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

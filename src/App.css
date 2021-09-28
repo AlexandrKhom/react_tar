@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  /*background-image: url("./components/calendary/back.png");*/
+  height: 100vh;
 }
 
 .App-logo {
@@ -41,6 +43,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+
 }
 
 .item {
